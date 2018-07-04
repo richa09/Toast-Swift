@@ -317,7 +317,8 @@ public extension UIView {
         activityView.layer.cornerRadius = style.cornerRadius
         
         // 040718
-        activityView.layer.borderColor = UIColor(red: 231, green: 95, blue: 120, alpha: 1).cgColor
+        let colorPink: UIColor! = UIColor(red: 231.0/255.0, green: 95.0/255.0, blue: 120.0/255.0, alpha: 1)
+        activityView.layer.borderColor = colorPink.cgColor
         activityView.layer.borderWidth = 1.0
      
         if style.displayShadow {
@@ -431,7 +432,8 @@ public extension UIView {
         wrapperView.layer.cornerRadius = style.cornerRadius
         
         // 040718
-        wrapperView.layer.borderColor = UIColor(red: 231, green: 95, blue: 120, alpha: 1).cgColor
+        let colorPink: UIColor! = UIColor(red: 231.0/255.0, green: 95.0/255.0, blue: 120.0/255.0, alpha: 1)
+        wrapperView.layer.borderColor = colorPink.cgColor
         wrapperView.layer.borderWidth = 1.0
      
         if style.displayShadow {
