@@ -316,6 +316,10 @@ public extension UIView {
         activityView.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]
         activityView.layer.cornerRadius = style.cornerRadius
         
+        // 040718
+        activityView.layer.borderColor = UIColor(red: 231, green: 95, blue: 120, alpha: 1).cgColor
+        activityView.layer.borderWidth = 1.0
+     
         if style.displayShadow {
             activityView.layer.shadowColor = style.shadowColor.cgColor
             activityView.layer.shadowOpacity = style.shadowOpacity
@@ -426,6 +430,10 @@ public extension UIView {
         wrapperView.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]
         wrapperView.layer.cornerRadius = style.cornerRadius
         
+        // 040718
+        wrapperView.layer.borderColor = UIColor(red: 231, green: 95, blue: 120, alpha: 1).cgColor
+        wrapperView.layer.borderWidth = 1.0
+     
         if style.displayShadow {
             wrapperView.layer.shadowColor = UIColor.black.cgColor
             wrapperView.layer.shadowOpacity = style.shadowOpacity
@@ -508,7 +516,8 @@ public extension UIView {
         let wrapperHeight = max((messageRect.origin.y + messageRect.size.height + style.verticalPadding), (imageRect.size.height + (style.verticalPadding * 2.0)))
         
         wrapperView.frame = CGRect(x: 0.0, y: 0.0, width: wrapperWidth, height: wrapperHeight)
-        
+        wrapperView.layer.cornerRadius = (wrapperHeight / 2)  // 040718, dynamic corner radius according to content height
+
         if let titleLabel = titleLabel {
             titleRect.size.width = longerWidth
             titleLabel.frame = titleRect
@@ -754,7 +763,7 @@ public enum ToastPosition {
     
     fileprivate func centerPoint(forToast toast: UIView, inSuperview superview: UIView) -> CGPoint {
         let topPadding: CGFloat = ToastManager.shared.style.verticalPadding + superview.csSafeAreaInsets.top
-        let bottomPadding: CGFloat = ToastManager.shared.style.verticalPadding + superview.csSafeAreaInsets.bottom
+        let bottomPadding: CGFloat = 35 //ToastManager.shared.style.verticalPadding + superview.csSafeAreaInsets.bottom  // 040718, // to move toast little upside
         
         switch self {
         case .top:
